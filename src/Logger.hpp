@@ -1,5 +1,5 @@
-#ifndef LOGER_
-#define LOGER_
+#ifndef LOGGER_
+#define LOGGER_
 #include <string>
 #include "LogLevel.hpp"
 

@@ -1,6 +1,6 @@
 #ifndef FILE_LOGGER_
-#define FILE_LOGER_
-#include "Loger.hpp"
+#define FILE_LOGGER_
+#include "Logger.hpp"
 #include <string>
 #include <mutex>
 #include <fstream>

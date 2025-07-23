@@ -25,9 +25,7 @@ std::string FileLogger::getCurrentTime() {
 
 FileLogger::FileLogger(const std::string& filename, LogLevel level): CurrentLevel(level) {
     outFile = std::ofstream(filename, std::ios::app);
-    if (!outFile) {
-        throw std::invalid_argument("Сan not be open file: " + filename);
-    }
+    //TODO: сделать проверку на открытие файла без выброса исклбчений
 }
 void FileLogger::setLogLevel(LogLevel level) {
     std::lock_guard<std::mutex> lock(LogMutex);

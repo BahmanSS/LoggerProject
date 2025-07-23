@@ -1,5 +1,5 @@
 #include "../include/LogLevel.hpp"
-
+// TODO: include в cmake
 std::string LogLeveltoString(LogLevel level) {
     switch(level)
     {

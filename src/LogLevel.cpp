@@ -1,4 +1,4 @@
-#include "LogLevel.hpp"
+#include "../include/LogLevel.hpp"
 
 std::string LogLeveltoString(LogLevel level) {
     switch(level)

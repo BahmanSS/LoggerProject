@@ -33,8 +33,8 @@ void FileLogger::setLogLevel(LogLevel level) {
 }
 bool FileLogger::addLog(const std::string& message, LogLevel level) {
     std::lock_guard<std::mutex> lock(LogMutex);
-    if (CurrentLevel > level) {
-        return true;
+    if (CurrentLevel < level) {
+        return false;
     }
     if (!openFile) {
         return false;
@@ -43,6 +43,7 @@ bool FileLogger::addLog(const std::string& message, LogLevel level) {
             << " ["<< getCurrentTime() << "] "
             << message << '\n';
     return true;
+    
 }
 FileLogger::~FileLogger() {
     if (outFile) {

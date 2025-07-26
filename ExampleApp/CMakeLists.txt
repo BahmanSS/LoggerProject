@@ -1,7 +1,3 @@
-cmake_minimum_required(VERSION 3.10)
+add_executable(app main.cc)
 
-project(ExampleApp LANGUAGE CXX )
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+target_link_libraries(app PRIVATE logger_static)

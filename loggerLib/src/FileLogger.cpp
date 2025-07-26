@@ -25,24 +25,28 @@ std::string FileLogger::getCurrentTime() {
 
 FileLogger::FileLogger(const std::string& filename, LogLevel level): CurrentLevel(level) {
     outFile = std::ofstream(filename, std::ios::app);
-    //TODO: сделать проверку на открытие файла без выброса исклбчений
+    openFile = (outFile.is_open()) ? true : false; 
 }
 void FileLogger::setLogLevel(LogLevel level) {
     std::lock_guard<std::mutex> lock(LogMutex);
     CurrentLevel = level;
 }
-void FileLogger::addLog(const std::string& message, LogLevel level) {
+bool FileLogger::addLog(const std::string& message, LogLevel level) {
     std::lock_guard<std::mutex> lock(LogMutex);
     if (CurrentLevel > level) {
-        return;
+        return true;
     }
-
+    if (!openFile) {
+        return false;
+    }
     outFile << "[" << level << "]" 
             << " ["<< getCurrentTime() << "] "
             << message << '\n';
+    return true;
 }
 FileLogger::~FileLogger() {
     if (outFile) {
         outFile.close();
     }
 }
+bool FileLogger::File_is_open() { return openFile;}

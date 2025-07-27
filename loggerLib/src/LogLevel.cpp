@@ -7,13 +7,13 @@ std::string LogLeveltoString(LogLevel level) {
         return "DEBUG";
         break;
     case LogLevel::INFO:
-        return "DEBUG";
+        return "INFO";
         break;
     case LogLevel::WARNING:
-        return "DEBUG";
+        return "WARNING";
         break;
     case LogLevel::ERROR:
-        return "DEBUG";
+        return "ERROR";
         break;
     default:
         return "UNKNOWN";
